@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Category{% endblock title %}
+{% block content %}
+{% include "nav.html" %}
+{% include "flash.html" %}
+<!-- Page Content -->
+<div class="">
+  <div class="row">
+     <div class="md-8">
+      <p style="width: 800px;"><br><br>
+      <div style="background-color:#E1AB1B  ">
+      <div class="panel-body" align="center">
+      <p class="h4">Brand : {{product.brandname}}</p>
+      <p class="h4">Material : {{product.material}}</p>
+      <img class="img-responsive" src="{{product.picture }}" alt="{{ product.name }}" style="height: 395px;">              
+      <p class="h4">Color : {{product.color}}</p>
+      <p class="h4">Price : {{product.price}}</p>
+      <p class="h4">Description : {{ product.description }}
+      </p>
+    </div>
+    </div>
+      </p>
+     </div>
+  </div>
+</div>
+{% endblock %}

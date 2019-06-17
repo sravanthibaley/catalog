@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% include "nav.html" %}
+{% block content %}
+<section id="editProduct" class="section">
+	<div class="section-content container padding-1-5">
+        <h1>Edit Product</h1>
+        <form action="{{url_for('editProduct',  product_id = product.id)}}" method = "post" class="padding-top-10">
+
+        	<div class="form-group">
+        		<label for="brandname">BrandName:</label>
+                <input type ="text" class="form-control" id="brandname" maxlength="250" name="brandname" value="{{product.brandname}}" required>
+            </div>
+
+            <div class="form-group">
+        		<label for="material">Material:</label>
+                <input type ="text" class="form-control" id="material" maxlength="250" name="material" value="{{product.material}}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="picture">Picture URL:</label>
+                <input type ="url" class="form-control" id="picture" maxlength="250" name="picture" placeholder="{{product.picture}}" value="{{product.picture}}"required>
+            </div>
+
+            <div class="form-group">
+        		<label for="color">Color:</label>
+                <input type ="text" class="form-control" id="color" maxlength="50" name="model" placeholder="{{product.color}}" value="{{product.color}}"required>
+            </div>
+
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="number" class="form-control" id="price" maxlength="50" min="0" max="70000" name="price" placeholder="{{product.price}}" value="{{product.price}}"required>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea name="description" id="description" class="form-control" maxlength="250" cols="30" rows="3"value="" required>{{product.description}}></textarea>
+            </div>
+            
+
+
+            <div class="form-group" style="width: 300px;">
+                <label for="picture">Category:</label>
+                <select name="category" class="form-control">
+                {% for a in categories %}
+                    <option value="{{a.name}}" {% if a == product.category %} selected {% endif %}>{{a.name}}</option>
+                {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit" id="submit" class="btn btn-primary">Save</button>
+                <a href="{{url_for('showcategories', category_id=product.category_id)}}">
+                    <button type="button" class="btn btn-danger">Cancel</button>
+                </a>
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endblock %}
